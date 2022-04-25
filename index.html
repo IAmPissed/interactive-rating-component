@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<script defer src="script.js"></script>
+		<title>Interactive Rating</title>
+	</head>
+	<body>
+		<div class="card" data-card>
+			<div class="card--survey" data-survey>
+				<div class="card__image--container">
+					<img src="images/icon-star.svg" alt="" class="card__logo" />
+				</div>
+				<h1 class="card__title">How did we do?</h1>
+				<p class="card__text">
+					Please let us know how we did with your support request. All feedback
+					is appreciated to help us improve our offering!
+				</p>
+				<div class="card__number-buttons" data-number-buttons-container>
+					<!-- <button class="card__number"> 1</button>
+					<button class="card__number"> 2</button>
+					<button class="card__number"> 3</button>
+					<button class="card__number"> 4</button>
+					<button class="card__number"> 5</button> -->
+				</div>
+				<button class="card__btn" data-submit-button>submit</button>
+			</div>
+			<div class="card--thank-you" data-thank-you>
+				<img
+					src="images/illustration-thank-you.svg"
+					alt=""
+					class="card__image"
+				/>
+				<div class="card__feedback">
+					You selected <span data-user-rating></span> out of
+					<span data-total-rating></span>
+				</div>
+				<h1 class="card__title">Thank you!</h1>
+				<p class="card__text">
+					We appreciate you taking the time to give a rating. If you ever need
+					more support, don't hesitate to get in touch!
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

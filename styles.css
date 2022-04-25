@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary: hsl(25, 97%, 53%);
+    --light-grey: hsl(215, 7%, 54%);
+    --medium-grey: hsl(216, 12%, 54%);
+    --circle-bg-blue: hsl(213, 20%, 18%);
+    --light-blue: hsl(220, 17%, 17%);
+    --dark-blue: hsl(216, 24%, 12%);
+    --very-dark-blue: hsl(216, 12%, 8%);
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--very-dark-blue);
+    color: white;
+    font-family: 'Overpass', sans-serif;
+}
+
+.card {
+    width: min(425px, calc(70% + 80px));
+    min-width: 320px;
+    height: 460px;
+    background: linear-gradient(var(--light-blue), var(--dark-blue));
+    padding: 40px;
+    border-radius: 40px;
+}
+.card--survey {
+    display: flex;
+    flex-direction: column;
+}
+.card__image--container {
+    background: var(--circle-bg-blue);
+    width: fit-content;
+    padding: .75rem;
+    border-radius: 50%;
+}
+.card__logo {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.card__title {
+    margin: 2rem 0 .5rem 0;
+}
+.card__text {
+    margin: .5rem 0 1.5rem 0;
+    color: var(--light-grey);
+    line-height: 1.6;
+    font-size: .9rem;
+}
+.card__number-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+.card__number {
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+    background: var(--light-blue);
+    border: none;
+    color: var(--light-grey);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 80ms linear;
+}
+.card__number:hover {
+    background: var(--primary);
+    color: white;
+}
+.card__btn {
+    font-family: inherit;
+    background: var(--primary);
+    border: 0;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 100vmax;
+    padding: 1em 0;
+    margin: 2rem 0;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 175ms linear;
+}
+.card__btn:hover {
+    background: white;
+    color: var(--primary);
+}
+.card--thank-you {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card__image {
+    width: 55%;
+}
+.card__feedback {
+    font-size: .9rem;
+    background: var(--light-blue);
+    padding: .5em 1.25em;
+    margin: 2rem 0 .25rem 0;
+    border-radius: 100vmax;
+    color: var(--primary);
+}
+.card--thank-you .card__title {
+    margin: 1.5rem 0 1rem 0;
+}
+.card--thank-you .card__text {
+    text-align: center;
+}
+.selected {
+    background: var(--medium-grey);
+    color: white;
+}
