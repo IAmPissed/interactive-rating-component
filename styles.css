@@ -19,11 +19,12 @@
 body {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background: var(--very-dark-blue);
     color: white;
     font-family: 'Overpass', sans-serif;
+    overflow-x: hidden;
 }
 
 .card {
@@ -33,6 +34,7 @@ body {
     background: linear-gradient(var(--light-blue), var(--dark-blue));
     padding: 40px;
     border-radius: 40px;
+    margin-top: 3em;
 }
 .card--survey {
     display: flex;
@@ -53,21 +55,23 @@ body {
     margin: 2rem 0 .5rem 0;
 }
 .card__text {
-    margin: .5rem 0 1.5rem 0;
+    margin: .5rem 0 1rem 0;
     color: var(--light-grey);
     line-height: 1.6;
     font-size: .9rem;
 }
 .card__number-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    gap: .5rem;
     margin: 1rem 0;
 }
 .card__number {
+    --size: 4em;
     display: inline-block;
-    width: 4em;
-    height: 4em;
+    width: var(--size);
+    height: var(--size);
     background: var(--light-blue);
     border: none;
     color: var(--light-grey);
@@ -88,7 +92,7 @@ body {
     text-transform: uppercase;
     border-radius: 100vmax;
     padding: 1em 0;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     cursor: pointer;
     letter-spacing: 2px;
     transition: all 175ms linear;
@@ -102,6 +106,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation-name: slideUp;
+    animation: slideUp 750ms ease;
 }
 .card__image {
     width: 55%;
@@ -123,4 +129,24 @@ body {
 .selected {
     background: var(--medium-grey);
     color: white;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        align-items: center;
+    }
+    .card {
+        margin-top: 0;
+    }
 }
