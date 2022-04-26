@@ -35,6 +35,10 @@ body {
     padding: 40px;
     border-radius: 40px;
     margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .card--survey {
     display: flex;
@@ -125,6 +129,7 @@ body {
 }
 .card--thank-you .card__text {
     text-align: center;
+    margin-bottom: 0;
 }
 .selected {
     background: var(--medium-grey);
