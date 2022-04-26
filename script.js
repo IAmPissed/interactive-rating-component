@@ -14,29 +14,38 @@ let ratings = [
 ]
 
 numberButtonsContainer.addEventListener('click', (e) => {
-    if (e.target.matches('.card__number')) {
-        if (e.target.classList.contains('selected')) {
-            e.target.classList.remove('selected')
-            resetRatings()
-            render()
-            return
-        }
-        let selectedRating = parseInt(e.target.innerText)
-        resetRatings()
-        ratings = setRatings(selectedRating)
-        render()
+    const element = e.target
+    if (!isRatingNumberElement) return
+    if (isRatingAlreadySelected(element)) {
+        undoUserRating(element)
+        return
     }
+    updateRatingElements(element)
 })
+const isRatingAlreadySelected = (element) => {
+    return element.classList.contains('selected')
+}
+const undoUserRating = (element) => {
+    element.classList.remove('selected')
+    resetRatings()
+    render()
+}
+const isRatingNumberElement = (element) => {
+    return element.matches('.card__number')
+}
+const updateRatingElements = (element) => {
+    let selectedRatingNumber = parseInt(element.innerText)
+    resetRatings()
+    ratings = setRatings(selectedRatingNumber)
+    render()
+}
 const resetRatings = () => {
     return ratings = ratings.map(rating => ({ ...rating, selected: false }))
 }
 const setRatings = (selectedRating) => {
     return ratings.map((rating) => {
-        if (selectedRating >= rating.number) {
-            return { ...rating, selected: !rating.selected }
-        } else {
-            return { ...rating }
-        }
+        return selectedRating >= rating.number ?
+            { ...rating, selected: !rating.selected } : { ...rating }
     })
 }
 
@@ -59,17 +68,23 @@ const clearElement = (element) => {
 }
 
 submitButton.addEventListener('click', () => {
-    if (isRatingAvailabe()) submitRating()
+    if (isUserRatingAvailabe()) submitRating()
 })
 
-const isRatingAvailabe = () => {
+const isUserRatingAvailabe = () => {
     return ratings.some((rating) => (rating.selected))
 }
 const submitRating = () => {
-    surveyElement.style.display = 'none'
-    thankYouElement.style.display = 'flex'
+    setElementsVisiblity(surveyElement, thankYouElement)
     totalRatingElement.innerText = ratings.length
-    userRatingElement.innerText = ratings.filter((rating) => rating.selected).length
+    userRatingElement.innerText = getUserRating()
+}
+const setElementsVisiblity = (elementToHide, elementToShow) => {
+    elementToHide.style.display = 'none'
+    elementToShow.style.display = 'flex'
+}
+const getUserRating = () => {
+    return ratings.filter((rating) => rating.selected).length
 }
 
 render()
